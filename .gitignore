@@ -92,7 +92,8 @@ TestResults/
 
 # App settings (KHÔNG commit)
 **/appsettings.json
-appsettings.*.json
+#appsettings.*.json
+
 #!appsettings.example.json
 
 # Environment variables
