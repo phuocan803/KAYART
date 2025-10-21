@@ -1,25 +1,58 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <LangVersion>12.0</LangVersion>
+    <RootNamespace>Server</RootNamespace>
+    <AssemblyName>Server</AssemblyName>
+    <StartupObject>Server.Program</StartupObject>
   </PropertyGroup>
 
+  <!-- Configuration Files -->
   <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="FirebaseAdmin" Version="3.4.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.73.0" />
-    <PackageReference Include="Google.Cloud.AIPlatform.V1" Version="3.59.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.15.0" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3650.58" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="StackExchange.Redis" Version="2.10.1" />
-    <PackageReference Include="System.Drawing.Common" Version="10.0.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Dependencies -->
+	<ItemGroup>
+		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+		<PackageReference Include="FirebaseAdmin" Version="3.4.0" />
+		<PackageReference Include="Google.Apis.Auth" Version="1.73.0" />
+		<PackageReference Include="Google.Cloud.AIPlatform.V1" Version="3.59.0" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3650.58" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="StackExchange.Redis" Version="2.10.1" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+		<PackageReference Include="System.Drawing.Common" Version="10.0.1" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.15.0" />
+	</ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\Database\Database.csproj" />
+  </ItemGroup>
+
+  <!-- Form Files -->
+  <ItemGroup>
+    <Compile Update="Form_Server.Designer.cs">
+      <DependentUpon>Form_Server.cs</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Resource Files -->
+  <ItemGroup>
+    <EmbeddedResource Update="Form_Server.resx">
+      <DependentUpon>Form_Server.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
