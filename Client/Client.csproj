@@ -1,25 +1,117 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <LangVersion>12.0</LangVersion>
+    <RootNamespace>Client</RootNamespace>
+    <AssemblyName>NT106-Assignment</AssemblyName>
+    <StartupObject>Client.Program</StartupObject>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="FirebaseAdmin" Version="3.4.0" />
-    <PackageReference Include="Google.Apis.Auth" Version="1.73.0" />
-    <PackageReference Include="Google.Cloud.AIPlatform.V1" Version="3.59.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.15.0" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3650.58" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-    <PackageReference Include="StackExchange.Redis" Version="2.10.1" />
-    <PackageReference Include="System.Drawing.Common" Version="10.0.1" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+    <Compile Remove="Helpers\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <None Remove="Helpers\**" />
+  </ItemGroup>
+
+  <!-- Dependencies -->
+	<ItemGroup>
+		<PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+		<PackageReference Include="FirebaseAdmin" Version="3.4.0" />
+		<PackageReference Include="Google.Apis.Auth" Version="1.73.0" />
+		<PackageReference Include="Google.Cloud.AIPlatform.V1" Version="3.59.0" />
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3650.58" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+		<PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
+		<PackageReference Include="System.Drawing.Common" Version="10.0.1" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.15.0" />
+		<PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.15.0" />
+	</ItemGroup>
+
+  <!-- Project References -->
+  <ItemGroup>
+    <ProjectReference Include="..\Database\Database.csproj" />
+  </ItemGroup>
+
+  <!-- Form Files - Explicitly listed to maintain Designer relationships -->
+  <ItemGroup>
+    <Compile Update="Form_Client.Designer.cs">
+      <DependentUpon>Form_Client.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Form_Home.Designer.cs">
+      <DependentUpon>Form_Home.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Form_ForgotPassword.Designer.cs">
+      <DependentUpon>Form_ForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Form_Login.Designer.cs">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Form_ResetPassword.Designer.cs">
+      <DependentUpon>Form_ResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Form_SignUp.Designer.cs">
+      <DependentUpon>Form_SignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Form_VerifyOTP.Designer.cs">
+      <DependentUpon>Form_VerifyOTP.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Resource Files -->
+  <ItemGroup>
+    <EmbeddedResource Update="Form_Client.resx">
+      <DependentUpon>Form_Client.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Form_ForgotPassword.resx">
+      <DependentUpon>Form_ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Form_Home.resx">
+      <DependentUpon>Form_Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Form_Login.resx">
+      <DependentUpon>Form_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Form_ResetPassword.resx">
+      <DependentUpon>Form_ResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Form_SignUp.resx">
+      <DependentUpon>Form_SignUp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Form_VerifyOTP.resx">
+      <DependentUpon>Form_VerifyOTP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <!-- Properties Files -->
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Settings Files -->
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="captcha.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
