@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="UTF-8">
+    <title>reCAPTCHA</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+        #error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 20px;
+            display: none;
+        }
+        #loading {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading">Loading reCAPTCHA...</div>
+    <div class="g-recaptcha"
+         data-sitekey="{{RECAPTCHA_SITE_KEY}}"
+         data-callback="onCaptchaSolved"
+         data-error-callback="onCaptchaError">
+    </div>
+    <div id="error-message"></div>
+
+    <script type="text/javascript">
+        /// ẩn loading sau 1 giây để tránh nhấp nháy
+        window.addEventListener('load', function () {
+            setTimeout(function() {
+                document.getElementById('loading').style.display = 'none';
+            }, 1000);
+        });
+
+        function onCaptchaSolved(token) {
+            console.log('reCAPTCHA solved, token length:', token.length);
+
+            // pa: lấy webview2 bridge để gửi token về C#
+            if (window.chrome && window.chrome.webview) {
+                console.log('Sending token to C#...');
+                window.chrome.webview.postMessage(token);
+            } else {
+                console.error('WebView2 bridge not available!');
+                showError('WebView2 communication error');
+            }
+        }
+
+        function onCaptchaError(error) {
+            console.error('reCAPTCHA error:', error);
+            showError('reCAPTCHA failed to load. Please check your internet connection and try again.');
+        }
+
+        function showError(message) {
+            var errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        // nếu site key không cấu hình đúng thì hiển thị lỗi
+        window.addEventListener('DOMContentLoaded', function() {
+            var siteKey = document.querySelector('.g-recaptcha').getAttribute('data-sitekey');
+            console.log('Site Key:', siteKey);
+
+            if (!siteKey || siteKey.includes('{{') || siteKey.includes('}}')) {
+                showError('Site Key not properly configured. Please check appsettings.json');
+            }
+        });
+    </script>
+</body>
+</html>
