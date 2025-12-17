@@ -36,35 +36,34 @@ PRINT '1. Inserting 25 users...';
 INSERT INTO Users (Username, PasswordHash, Email, FullName, PhoneNumber, IsOnline, CreatedAt)
 VALUES
     -- English names (1-10) - Each with unique BCrypt hash for "123456"
-    ('alice','$2a$11$YQ7WzG8JqKzVFvXkPZqGPO9vE6qhJ5rKxH8nF2mL4pT6wR9sU1vZa','alice@kayart.com','Alice Johnson','0901234567',1,DATEADD(DAY,-60,GETDATE())),
-    ('bob','$2a$11$KmN3PqR7sT9uV2wX4yZ5AeBcD6fG8hI0jK1lM3nO5pQ7rS9tU1vW','bob@kayart.com','Bob Smith','0907654321',1,DATEADD(DAY,-55,GETDATE())),
-    ('charlie','$2a$11$LnO4QrS8tU0vW3xY5zA6BfCdE7gH9iJ1kL2mN4oP6qR8sT0uV2wX','charlie@kayart.com','Charlie Brown','0908888888',1,DATEADD(DAY,-50,GETDATE())),
-    ('diana','$2a$11$MoP5RsT9uV1wX4yZ6AB7CgDeF8hI0jK2lM3nO5pQ7rS9tU1vW3xY','diana@kayart.com','Diana Prince','0909999999',0,DATEADD(DAY,-45,GETDATE())),
-    ('emma','$2a$11$NpQ6StU0vW2xY5zA7BC8DhEfG9iJ1kL3mN4oP6qR8sT0uV2wX4yZ','emma@kayart.com','Emma Watson','0901111111',1,DATEADD(DAY,-40,GETDATE())),
-    ('frank','$2a$11$OqR7TuV1wX3yZ6AB8CD9EiFgH0jK2lM4nO5pQ7rS9tU1vW3xY5zA','frank@kayart.com','Frank Miller','0902222222',1,DATEADD(DAY,-35,GETDATE())),
-    ('grace','$2a$11$PrS8UvW2xY4zA7BC9DE0FjGhI1kL3mN5oP6qR8sT0uV2wX4yZ6AB','grace@kayart.com','Grace Lee','0903333333',1,DATEADD(DAY,-30,GETDATE())),
-    ('henry','$2a$11$QsT9VwX3yZ5AB8CD0EF1GkHiJ2lM4nO6pQ7rS9tU1vW3xY5zA7BC','henry@kayart.com','Henry Ford','0904444444',0,DATEADD(DAY,-25,GETDATE())),
-    ('irene','$2a$11$RtU0WxY4zA6BC9DE1FG2HlIjK3mN5oP7qR8sT0uV2wX4yZ6AB8CD','irene@kayart.com','Irene Chen','0905555555',0,DATEADD(DAY,-20,GETDATE())),
-    ('jack','$2a$11$SuV1XyZ5AB7CD0EF2GH3ImJkL4nO6pQ8rS9tU1vW3xY5zA7BC9DE','jack@kayart.com','Jack Wilson','0906666666',1,DATEADD(DAY,-15,GETDATE())),
+    ('alice','$2a$11$SvuqlngKjkwCh/IwnNWvJuEaA5YIGNjuUabYR/14R7aPebdTDXUoW','alice@kayart.com','Alice Johnson','0901234567',1,DATEADD(DAY,-60,GETDATE())),
+    ('bob','$2a$11$Pm/LOYfpWPoUThy8qufBpOkUnRbZpH/4essTv7i8ahQ6hfXgaD3k2','bob@kayart.com','Bob Smith','0907654321',1,DATEADD(DAY,-55,GETDATE())),
+    ('charlie','$2a$11$/Jap/CwFgx3Bb70Hfhfmx.10kkdc1UALVo7tvdCscfNnwvMr4KFzK','charlie@kayart.com','Charlie Brown','0908888888',1,DATEADD(DAY,-50,GETDATE())),
+    ('diana','$2a$11$KtbFcc2vjNiwyGQwUqUssuXVnyr.9ThhwU5hTXcaSEPcqU5CLrcuW','diana@kayart.com','Diana Prince','0909999999',0,DATEADD(DAY,-45,GETDATE())),
+    ('emma','$2a$11$lgkiMLEX.dzbGeGli/a4x.LFCEw2amhe5IJdXMtyfMfew.wMc1WyG','emma@kayart.com','Emma Watson','0901111111',1,DATEADD(DAY,-40,GETDATE())),
+    ('frank','$2a$11$8.BSn3kE9eUWSUH/pW4LjOy4wYieDHaCxhFNKOX5VdDxwmaggDyZm','frank@kayart.com','Frank Miller','0902222222',1,DATEADD(DAY,-35,GETDATE())),
+    ('grace','$2a$11$tW1au7NrzC6tXTf0bqRBEO8v6PbHeYe7ntSBMNUpNmEjwnceO/08C','grace@kayart.com','Grace Lee','0903333333',1,DATEADD(DAY,-30,GETDATE())),
+    ('henry','$2a$11$cyY3skR6hTmPsfXinltkvuUPVQpyYEtjI9sN3rdpL7QpAh/SMbUsG','henry@kayart.com','Henry Ford','0904444444',0,DATEADD(DAY,-25,GETDATE())),
+    ('irene','$2a$11$BN5PTpYNdnTUfpHeV38vf.zSNSJCEfBNh4EAkqwNxcRdPI9Ov49rq','irene@kayart.com','Irene Chen','0905555555',0,DATEADD(DAY,-20,GETDATE())),
+    ('jack','$2a$11$6wEJhKq1zsCqJOzJLHMCGeIGVebNspEkT6R.p081YkVYJyAqaQmpu','jack@kayart.com','Jack Wilson','0906666666',1,DATEADD(DAY,-15,GETDATE())),
     
     -- Vietnamese names (11-25) - Each with unique BCrypt hash for "123456"
-    ('minh','$2a$11$TvW2YzA6BC8DE1FG3HI4JnKlM5oP7qR9sT0uV2wX4yZ6AB8CD0EF','minh@kayart.com',N'Nguyễn Văn Minh','0907777777',1,DATEADD(DAY,-48,GETDATE())),
-    ('lan','$2a$11$UwX3ZAB7CD9EF2GH4IJ5KoLmN6pQ8rS0tU1vW3xY5zA7BC9DE1FG','lan@kayart.com',N'Trần Thị Lan','0908777777',1,DATEADD(DAY,-42,GETDATE())),
-    ('huy','$2a$11$VxY4ABC8DE0FG3HI5JK6LpMnO7qR9sT1uV2wX4yZ6AB8CD0EF2GH','huy@kayart.com',N'Lê Quang Huy','0909777777',0,DATEADD(DAY,-38,GETDATE())),
-    ('thu','$2a$11$WyZ5BCD9EF1GH4IJ6KL7MqNoP8rS0tU2vW3xY5zA7BC9DE1FG3HI','thu@kayart.com',N'Phạm Thu Thảo','0900777777',1,DATEADD(DAY,-33,GETDATE())),
-    ('nam','$2a$11$XzA6CDE0FG2HI5JK7LM8NrOpQ9sT1uV3wX4yZ6AB8CD0EF2GH4IJ','nam@kayart.com',N'Hoàng Văn Nam','0901777777',1,DATEADD(DAY,-28,GETDATE())),
-    ('linh','$2a$11$YAB7DEF1GH3IJ6KL8MN9OsPqR0tU2vW4xY5zA7BC9DE1FG3HI5JK','linh@kayart.com',N'Vũ Thị Linh','0902777777',0,DATEADD(DAY,-22,GETDATE())),
-    ('tuan','$2a$11$ZBC8EFG2HI4JK7LM9NO0PtQrS1uV3wX5yZ6AB8CD0EF2GH4IJ6KL','tuan@kayart.com',N'Đặng Anh Tuấn','0903777777',1,DATEADD(DAY,-18,GETDATE())),
-    ('ha','$2a$11$ACD9FGH3IJ5KL8MN0OP1QuRsT2vW4xY6zA7BC9DE1FG3HI5JK7LM','ha@kayart.com',N'Bùi Thu Hà','0904777777',1,DATEADD(DAY,-14,GETDATE())),
-    ('khoa','$2a$11$BDE0GHI4JK6LM9NO1PQ2RvStU3wX5yZ7AB8CD0EF2GH4IJ6KL8MN','khoa@kayart.com',N'Phan Minh Khoa','0905777777',0,DATEADD(DAY,-10,GETDATE())),
-    ('nhi','$2a$11$CEF1HIJ5KL7MN0OP2QR3SwTuV4xY6zA8BC9DE1FG3HI5JK7LM9NO','nhi@kayart.com',N'Võ Thị Nhi','0906777777',1,DATEADD(DAY,-8,GETDATE())),
-    ('quan','$2a$11$DFG2IJK6LM8NO1PQ3RS4TxUvW5yZ7AB9CD0EF2GH4IJ6KL8MN0OP','quan@kayart.com',N'Trịnh Văn Quân','0907888888',1,DATEADD(DAY,-6,GETDATE())),
-    ('phuong','$2a$11$EGH3JKL7MN9OP2QR4ST5UyVwX6zA8BC0DE1FG3HI5JK7LM9NO1PQ','phuong@kayart.com',N'Lý Thị Phương','0908999999',1,DATEADD(DAY,-5,GETDATE())),
-    ('dat','$2a$11$FHI4KLM8NO0PQ3RS5TU6VzWxY7AB9CD1EF2GH4IJ6KL8MN0OP2QR','dat@kayart.com',N'Ngô Tiến Đạt','0909888888',0,DATEADD(DAY,-4,GETDATE())),
-    ('vy','$2a$11$GIJ5LMN9OP1QR4ST6UV7WzXyZ8BC0DE2FG3HI5JK7LM9NO1PQ3RS','vy@kayart.com',N'Đỗ Khánh Vy','0900888888',1,DATEADD(DAY,-3,GETDATE())),
-    ('long','$2a$11$HJK6MNO0PQ2RS5TU7VW8XzYzA9CD1EF3GH4IJ6KL8MN0OP2QR4ST','long@kayart.com',N'Mai Hoàng Long','0901888888',1,DATEADD(DAY,-2,GETDATE()));
-
-    GO
+    ('minh','$2a$11$hDOWGT4MMytabLBUeRhSMuB/QgIDTu7eKj/h2OlKY0NoAP5DJ1KQ2','minh@kayart.com',N'Nguyễn Văn Minh','0907777777',1,DATEADD(DAY,-48,GETDATE())),
+    ('lan','$2a$11$niV3BwaMieTGXYqhhkG1yO3tgjJvbG9257jgHVweah4IqLIFPfCnu','lan@kayart.com',N'Trần Thị Lan','0908777777',1,DATEADD(DAY,-42,GETDATE())),
+    ('huy','$2a$11$.rY4qSd/SPlRxmROGgkqa.DEf9.f7tS.ea1g2l76qpeUFjqLvmq46','huy@kayart.com',N'Lê Quang Huy','0909777777',0,DATEADD(DAY,-38,GETDATE())),
+    ('thu','$2a$11$7lYVtXVJ/i2YbxkzuQDscOGRClIlAnQ8XZuwFBvtFzD06C1EVF6Mu','thu@kayart.com',N'Phạm Thu Thảo','0900777777',1,DATEADD(DAY,-33,GETDATE())),
+    ('nam','$2a$11$JJ33nsmXd2oiko4P5CvxdO0BM6EfaOlkKMyggghVZoC.DFbGO6YOy','nam@kayart.com',N'Hoàng Văn Nam','0901777777',1,DATEADD(DAY,-28,GETDATE())),
+    ('linh','$2a$11$simTLvbqM3msc3AwQibOc.JD1duR3z2jbiTqw5pSZfqyIobebKnjG','linh@kayart.com',N'Vũ Thị Linh','0902777777',0,DATEADD(DAY,-22,GETDATE())),
+    ('tuan','$2a$11$nxAYHDw91uwOjIgvSpkLxOiIvZohSy51fF0G4WkPD8yWbjgP76O1q','tuan@kayart.com',N'Đặng Anh Tuấn','0903777777',1,DATEADD(DAY,-18,GETDATE())),
+    ('ha','$2a$11$x2aHvBidX9MkpuBQMzbCkeBYvVfVLYcQKVdX8CKbQUrteCChk6u.a','ha@kayart.com',N'Bùi Thu Hà','0904777777',1,DATEADD(DAY,-14,GETDATE())),
+    ('khoa','$2a$11$S8eQweqPSYMVL5izrcwh3.5Lt2pvcWIqPj6Y5PQ/75BelGGGdu7JG','khoa@kayart.com',N'Phan Minh Khoa','0905777777',0,DATEADD(DAY,-10,GETDATE())),
+    ('nhi','$2a$11$hDmHmz/a7jx.sySpBvY1P.OOZoksT2r3uJAOEUA3EExBGNjWXb2s6','nhi@kayart.com',N'Võ Thị Nhi','0906777777',1,DATEADD(DAY,-8,GETDATE())),
+    ('quan','$2a$11$TjRKU6Es.YAd3DJQXf1aA.OAnKLxr5KJBS8aq96azEk8BDdgdnh5e','quan@kayart.com',N'Trịnh Văn Quân','0907888888',1,DATEADD(DAY,-6,GETDATE())),
+    ('phuong','$2a$11$SIWSoK6fq7oI1UKTmh6MF.H5AAoI7XxU54QVE.IRs6GiRElnrae2e','phuong@kayart.com',N'Lý Thị Phương','0908999999',1,DATEADD(DAY,-5,GETDATE())),
+    ('dat','$2a$11$Gq.6AtMQErDk/xNoRrFM3Oo9jCQc2SbKBA335rTENRlZOTqMzoeqO','dat@kayart.com',N'Ngô Tiến Đạt','0909888888',0,DATEADD(DAY,-4,GETDATE())),
+    ('vy','$2a$11$BgMOSeRd8YWGJ.RR1xuw3eF4UhCJcW0FVPucy/Ll6qtWfuys2gahu','vy@kayart.com',N'Đỗ Khánh Vy','0900888888',1,DATEADD(DAY,-3,GETDATE())),
+    ('long','$2a$11$X9BQIix8BYvnlckoCQC2xOnJGbtb4y7aWixedu/dK.K/DwPScZUXS','long@kayart.com',N'Mai Hoàng Long','0901888888',1,DATEADD(DAY,-2,GETDATE()));
+GO
 
 PRINT '2. Inserting 50 projects...';
 
@@ -188,7 +187,6 @@ PRINT '50 projects inserted';
 PRINT '8 projects are currently online for collaboration';
 GO
 
-=
 PRINT '3. Inserting shared projects...';
 
 -- Alice shares with many friends
@@ -562,7 +560,7 @@ VALUES
     (1111, 22, 'phuong', N'Chào Lan! Hôm nay vẽ gì?', DATEADD(HOUR,-7,GETDATE())),
     (1111, 12, 'lan', N'Vẽ hoa sen nhé!', DATEADD(MINUTE,-360,GETDATE()));
 
-PRINT '   ✓ 34 room chat messages inserted';
+PRINT '34 room chat messages inserted';
 GO
 
 
@@ -617,5 +615,5 @@ VALUES
     (4567, @bitmapData, DATEADD(MINUTE,-20,GETDATE())),
     (8901, @bitmapData, DATEADD(MINUTE,-3,GETDATE()));
 
-PRINT '   ✓ 6 room bitmaps inserted (persistent canvas data)';
+PRINT '6 room bitmaps inserted (persistent canvas data)';
 GO
