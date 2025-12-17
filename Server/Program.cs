@@ -23,7 +23,7 @@ namespace Server
             }
             catch (InvalidOperationException ex)
             {
-                MessageBox.Show(ex.Message, "Lỗi Khởi tạo Firebase", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Firebase Initialization Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; 
             }
             Application.Run(new Server());
