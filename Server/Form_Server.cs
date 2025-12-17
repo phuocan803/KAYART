@@ -692,7 +692,7 @@ namespace Server
             }
             catch (Exception)
             {
-                Packet response = new Packet { Code = request.Code, Success = false, ErrorMessage = "Phiên đăng nhập hết hạn hoặc không hợp lệ" };
+                Packet response = new Packet { Code = request.Code, Success = false, ErrorMessage = "Login session expired or invalid" };
                 sendSpecific(user, response);
                 return false;
             }
@@ -707,7 +707,7 @@ namespace Server
             if (!isHuman)
             {
                 response.Success = false;
-                response.ErrorMessage = "Xác thực Captcha thất bại! Vui lòng thử lại.";
+                response.ErrorMessage = "Captcha verification failed! Please try again.";
                 Manager.WriteToLog($"[LOGIN BLOCKED] Suspicious login attempt from {user.Client.Client.RemoteEndPoint}");
                 sendSpecific(user, response);
                 return; 
@@ -747,21 +747,21 @@ namespace Server
                     {
                         Manager.WriteToLog($"[JWT ERROR] Failed to generate token: {jwtEx.Message}");
                         response.Success = false;
-                        response.ErrorMessage = "Lỗi tạo token xác thực!";
+                        response.ErrorMessage = "Error creating authentication token!";
                     }
                 }
                 else
                 {
                     response.Success = false;
                     response.LoginUsername = request.LoginUsername;
-                    response.ErrorMessage = "Tên đăng nhập hoặc mật khẩu không đúng!";
+                    response.ErrorMessage = "Username or password is incorrect!";
                     Manager.WriteToLog($"[LOGIN FAILED] {request.LoginUsername}");
                 }
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.ErrorMessage = "Lỗi server: " + ex.Message;
+                response.ErrorMessage = "Server error: " + ex.Message;
                 Manager.WriteToLog($"[LOGIN ERROR] {ex.Message}");
             }
 
@@ -792,7 +792,7 @@ namespace Server
             if (!isHuman)
             {
                 response.Success = false;
-                response.ErrorMessage = "Captcha không hợp lệ!";
+                response.ErrorMessage = "Invalid Captcha!";
                 sendSpecific(user, response);
                 return;
             }
@@ -808,14 +808,14 @@ namespace Server
 
                 response.Success = success;
                 response.SignUpUsername = request.SignUpUsername;
-                response.ErrorMessage = success ? null : "Tên đăng nhập hoặc Email đã tồn tại!";
+                response.ErrorMessage = success ? null : "Username or Email already exists!";
 
                 Manager.WriteToLog($"[SIGNUP] {request.SignUpUsername} - {(success ? "SUCCESS" : "FAILED")}");
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.ErrorMessage = "Lỗi server: " + ex.Message;
+                response.ErrorMessage = "Server error: " + ex.Message;
                 Manager.WriteToLog($"[SIGNUP ERROR] {ex.Message}");
             }
 
@@ -829,7 +829,7 @@ namespace Server
             if (!isHuman)
             {
                 response.Success = false;
-                response.ErrorMessage = "Captcha không hợp lệ!";
+                response.ErrorMessage = "Invalid Captcha!";
                 sendSpecific(user, response);
                 return;
             }
@@ -846,21 +846,21 @@ namespace Server
 
                     response.Success = true;
                     response.ForgotPasswordEmail = request.ForgotPasswordEmail;
-                    response.ErrorMessage = "Đã gửi mã xác thực! Vui lòng kiểm tra Email.";
+                    response.ErrorMessage = "Verification code sent! Please check your email.";
 
                     Manager.WriteToLog($"[OTP SENT] {request.ForgotPasswordEmail} | OTP: {otpCode}");
                 }
                 else
                 {
                     response.Success = false;
-                    response.ErrorMessage = "Email không tồn tại trong hệ thống!";
+                    response.ErrorMessage = "Email does not exist in the system!";
                     Manager.WriteToLog($"[FORGOT PASSWORD] Email not found: {request.ForgotPasswordEmail}");
                 }
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.ErrorMessage = "Lỗi server: " + ex.Message;
+                response.ErrorMessage = "Server error: " + ex.Message;
                 Manager.WriteToLog($"[FORGOT PASSWORD ERROR] {ex.Message}");
             }
 
@@ -894,15 +894,15 @@ namespace Server
                 {
                     response.Success = false;
                     response.ErrorMessage = string.IsNullOrEmpty(savedOtp)
-                        ? "Mã OTP đã hết hạn (5 phút). Vui lòng lấy mã mới."
-                        : "Mã OTP không chính xác!";
+                        ? "OTP code has expired (5 minutes). Please get a new code."
+                        : "OTP code is incorrect!";
                 }
 
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.ErrorMessage = "Lỗi server: " + ex.Message;
+                response.ErrorMessage = "Server error: " + ex.Message;
                 Manager.WriteToLog($"[VERIFY OTP ERROR] {ex.Message}");
             }
 
@@ -918,14 +918,14 @@ namespace Server
                 bool success = dbHelper.ResetPassword(request.ResetPasswordEmail, request.ResetPasswordNewPassword);
                 response.Success = success;
                 response.ResetPasswordEmail = request.ResetPasswordEmail;
-                response.ErrorMessage = success ? null : "Không thể reset password!";
+                response.ErrorMessage = success ? null : "Cannot reset password!";
 
                 Manager.WriteToLog($"[RESET PASSWORD] {request.ResetPasswordEmail} - {(success ? "SUCCESS" : "FAILED")}");
             }
             catch (Exception ex)
             {
                 response.Success = false;
-                response.ErrorMessage = "Lỗi server: " + ex.Message;
+                response.ErrorMessage = "Server error: " + ex.Message;
                 Manager.WriteToLog($"[RESET PASSWORD ERROR] {ex.Message}");
             }
 
