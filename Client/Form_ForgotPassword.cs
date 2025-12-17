@@ -36,7 +36,7 @@ namespace Client
 
             if (string.IsNullOrEmpty(email))
             {
-                MessageBox.Show("Vui lòng nhập email!");
+                MessageBox.Show("Please enter email!");
                 return;
             }
 
@@ -49,7 +49,7 @@ namespace Client
             }
             else
             {
-                MessageBox.Show("Vui lòng xác thực Captcha!");
+                MessageBox.Show("Please verify Captcha!");
                 return;
             }
             try
@@ -84,9 +84,9 @@ namespace Client
                 if (response.Success)
                 {
                     MessageBox.Show(
-                        "Một mã xác thực (OTP) kèm liên kết đăng nhập (Magic Link) đã được gửi đến Email của bạn.\n" +
-                        "Vui lòng kiểm tra hộp thư Email",
-                        "Ðã gửi Email",
+                        "A verification code (OTP) and login link (Magic Link) have been sent to your email.\n" +
+                        "Please check your email inbox",
+                        "Email Sent",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Information
                     );
@@ -95,9 +95,9 @@ namespace Client
 
                     if (response.Success)
                     {
-                        MessageBox.Show("Mã OTP và Link xác thực đã được gửi đến Email của bạn.", "Thông báo");
+                        MessageBox.Show("OTP code and verification link have been sent to your email.", "Notification");
 
-                        // mở form verify otp
+                        // open verify otp form
                         Form_VerifyOTP verifyForm = new Form_VerifyOTP(this.Location, this.Size);
                         verifyForm.SetResetEmail(email); 
                         verifyForm.Show();
@@ -112,13 +112,13 @@ namespace Client
                 }
                 else
                 {
-                    MessageBox.Show(response.ErrorMessage ?? "Email không tồn tại!");
+                    MessageBox.Show(response.ErrorMessage ?? "Email does not exist!");
                     client.Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi kết nối server: " + ex.Message);
+                MessageBox.Show("Server connection error: " + ex.Message);
             }
         }
 
