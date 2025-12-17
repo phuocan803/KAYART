@@ -43,19 +43,19 @@ namespace Client
 
             if (string.IsNullOrEmpty(otpCode))
             {
-                MessageBox.Show("Vui lòng nhập mã OTP!");
+                MessageBox.Show("Please enter OTP code!");
                 return;
             }
 
             if (otpCode.Length != 6)
             {
-                MessageBox.Show("Mã OTP phải có 6 chữ số!");
+                MessageBox.Show("OTP code must be 6 digits!");
                 return;
             }
 
             if (string.IsNullOrEmpty(resetEmail))
             {
-                MessageBox.Show("Không tìm thấy email!");
+                MessageBox.Show("Email not found!");
                 return;
             }
 
@@ -88,7 +88,7 @@ namespace Client
 
                 if (response.Success)
                 {
-                    MessageBox.Show("Xác thực OTP thành công!");
+                    MessageBox.Show("OTP verification successful!");
                     client.Close();
 
                     Form_ResetPassword resetForm = new Form_ResetPassword(this.Location, this.Size);
@@ -98,13 +98,13 @@ namespace Client
                 }
                 else
                 {
-                    MessageBox.Show(response.ErrorMessage ?? "OTP không dúng!");
+                    MessageBox.Show(response.ErrorMessage ?? "OTP is incorrect!");
                     client.Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi kết nối server: " + ex.Message);
+                MessageBox.Show("Server connection error: " + ex.Message);
             }
         }
         private void Button_Back_Click(object sender, EventArgs e)
