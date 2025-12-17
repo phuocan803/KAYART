@@ -29,7 +29,7 @@ namespace Client
         }
 
 
-        /// thêm username vào danh sách user
+        /// add username to user list
         public void AddToUserListView(string line)
         {
             if (List.InvokeRequired)
@@ -45,7 +45,7 @@ namespace Client
             }
         }
 
-        // xóa username khỏi danh sách user
+        // remove username from user list
         public void RemoveFromUserListView(string line)
         {
             Action action = () =>
@@ -69,12 +69,12 @@ namespace Client
             }
         }
 
-        // xóa tất cả user khỏi danh sách, giữ lại dòng đầu tiên
+        // remove all users from list, keep first line
         public void ClearUserListView()
         {
             Action action = () =>
             {
-                // giữ lại dòng đầu tiên, tiêu đề :>
+                // keep first line, header :>
                 if (List.Items.Count > 0)
                 {
                     ListViewItem firstLine = List.Items[0];
@@ -96,7 +96,7 @@ namespace Client
             }
         }
 
-        // cập nhật room id hiển thị trên box ở panel
+        // update room id displayed on panel box
         public void UpdateRoomID(string roomID)
         {
             if (RoomID.InvokeRequired)
@@ -112,7 +112,7 @@ namespace Client
             }
         }
 
-        // chuyển bitmap thành string base64
+        // convert bitmap to base64 string
         public string BitmapToString(Bitmap bitmap)
         {
             if (bitmap == null) return null;
@@ -125,7 +125,7 @@ namespace Client
             }
         }
 
-        // chuyển string base64 thành bitmap
+        // convert base64 string to bitmap
         public Bitmap StringToBitmap(string base64string)
         {
             if (string.IsNullOrEmpty(base64string)) return null;
