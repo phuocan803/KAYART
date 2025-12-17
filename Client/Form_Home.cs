@@ -1188,8 +1188,8 @@ namespace Client
 
                 if (!IsValidRoomCode(roomID))
                 {
-                    MessageBox.Show($"Mã phòng phải là {ROOM_CODE_LENGTH} chữ số!",
-                        "Mã phòng không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show($"Room code must be {ROOM_CODE_LENGTH} digits!",
+                        "Invalid Room Code", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -1197,7 +1197,7 @@ namespace Client
                 {
                     if (!IPv4IsValid(serverIP))
                     {
-                        MessageBox.Show("Địa chỉ IP không hợp lệ!", "Lỗi",
+                        MessageBox.Show("Invalid IP address!", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
@@ -1223,7 +1223,7 @@ namespace Client
                 {
                     if (!IPv4IsValid(serverIP))
                     {
-                        MessageBox.Show("Địa chỉ IP không hợp lệ!", "Lỗi",
+                        MessageBox.Show("Invalid IP address!", "Error",
                             MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
@@ -1271,8 +1271,8 @@ namespace Client
                 else
                 {
                     DialogResult result = MessageBox.Show(
-                        "Bạn có chắc muốn đăng xuất?",
-                        "Xác nhận đăng xuất",
+                        "Are you sure you want to logout?",
+                        "Confirm Logout",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Question
                     );
@@ -1538,7 +1538,7 @@ namespace Client
                             flowLayoutPanel_Projects.Controls.Clear();
                             flowLayoutPanel_Projects.Controls.Add(new Label()
                             {
-                                Text = "Có vẻ như bạn chưa đăng nhập.\nVui lòng đăng nhập để truy cập dự án của bạn.",
+                                Text = "It seems you are not logged in.\nPlease login to access your projects.",
                                 AutoSize = true,
                                 ForeColor = Color.Orange,
                                 Font = new Font("Segoe UI", 11),
@@ -1551,7 +1551,7 @@ namespace Client
                             flowLayoutPanel_ActiveRooms.Controls.Clear();
                             flowLayoutPanel_ActiveRooms.Controls.Add(new Label()
                             {
-                                Text = "Không tìm thấy phòng hoạt động nào.\nTạo một phòng mới để bắt đầu hợp tác!",
+                                Text = "No active rooms found.\nCreate a new room to start collaborating!",
                                 AutoSize = true,
                                 ForeColor = Color.Orange,
                                 Font = new Font("Segoe UI", 11),
@@ -1574,7 +1574,7 @@ namespace Client
                         flowLayoutPanel_Projects.Controls.Clear();
                         flowLayoutPanel_Projects.Controls.Add(new Label()
                         {
-                            Text = "Chế độ khách - Không có dự án nào khả dụng.\nVui lòng đăng nhập để truy cập dự án của bạn.",
+                            Text = "Guest mode - No projects available.\nPlease login to access your projects.",
                             AutoSize = true,
                             ForeColor = Color.Gray,
                             Font = new Font("Segoe UI", 11),
@@ -1614,8 +1614,8 @@ namespace Client
 
                 if (!IsValidRoomCode(roomCode))
                 {
-                    MessageBox.Show($"Mã phòng phải là {ROOM_CODE_LENGTH} chữ số!",
-                        "Mã phòng không hợp lệ",
+                    MessageBox.Show($"Room code must be {ROOM_CODE_LENGTH} digits!",
+                        "Invalid Room Code",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
                     return;
