@@ -106,7 +106,7 @@ namespace Server
         {
             if (string.IsNullOrEmpty(email))
             {
-                throw new ArgumentException("Email không được để trống.");
+                throw new ArgumentException("Email cannot be empty.");
             }
 
             var actionCodeSettings = new ActionCodeSettings
@@ -122,17 +122,17 @@ namespace Server
                     actionCodeSettings
                 );
 
-                WriteToLog($"Đã tạo Magic Link cho email: {email}");
+                WriteToLog($"Created Magic Link for email: {email}");
                 return magicLink;
             }
             catch (FirebaseAuthException ex)
             {
-                WriteToLog($"Lỗi Firebase Auth: {ex.Message}");
-                throw new Exception("Lỗi xác thực Firebase: " + ex.ErrorCode);
+                WriteToLog($"Firebase Auth error: {ex.Message}");
+                throw new Exception("Firebase authentication error: " + ex.ErrorCode);
             }
             catch (Exception ex)
             {
-                WriteToLog($"Lỗi chung khi tạo Magic Link: {ex.Message}");
+                WriteToLog($"General error creating Magic Link: {ex.Message}");
                 throw;
             }
         }
@@ -152,12 +152,12 @@ namespace Server
                 {
                     mail.From = new MailAddress(SENDER_EMAIL, "KayArt Support");
                     mail.To.Add(toEmail);
-                    mail.Subject = "Mã xác thực & Liên kết khôi phục mật khẩu";
+                    mail.Subject = "Verification Code & Password Recovery Link";
                     mail.Body = $@"
                     <div style='font-family: Helvetica, Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px;'>
-                        <h2 style='color: #4CAF50; text-align: center;'>Yêu cầu Khôi phục Mật khẩu</h2>
-                        <p>Xin chào,</p>
-                        <p>Bạn vừa yêu cầu đặt lại mật khẩu cho tài khoản KayArt. Dưới đây là mã OTP của bạn:</p>
+                        <h2 style='color: #4CAF50; text-align: center;'>Password Recovery Request</h2>
+                        <p>Hello,</p>
+                        <p>You have requested to reset your password for your KayArt account. Below is your OTP code:</p>
                         
                         <div style='text-align: center; margin: 20px 0;'>
                             <span style='font-size: 32px; font-weight: bold; letter-spacing: 5px; color: #333; background: #f4f4f4; padding: 10px 20px; border-radius: 5px;'>
@@ -165,7 +165,7 @@ namespace Server
                             </span>
                         </div>
 
-                        <p>Có thể nhấp vào liên kết an toàn dưới đây:</p>
+                        <p>You can click the secure link below:</p>
                         
                         <div style='text-align: center; margin: 20px 0;'>
                             <a href='{magicLinkUrl}' style='background-color: #008CBA; color: white; padding: 12px 25px; text-decoration: none; font-size: 16px; border-radius: 5px;'>
@@ -174,7 +174,7 @@ namespace Server
                         </div>
 
                         <hr style='border: 0; border-top: 1px solid #eee;' />
-                        <p style='font-size: 12px; color: #888;'>Mã này sẽ hết hạn sau 5 phút. Nếu bạn không yêu cầu, vui lòng bỏ qua email này.</p>
+                        <p style='font-size: 12px; color: #888;'>This code will expire in 5 minutes. If you did not request this, please ignore this email.</p>
                     </div>";
                     mail.IsBodyHtml = true; 
 
@@ -191,7 +191,7 @@ namespace Server
             catch (Exception ex)
             {
                 WriteToLog($"Email error: {ex.Message}");
-                throw new Exception("Lỗi gửi mail: " + ex.Message);
+                throw new Exception("Email sending error: " + ex.Message);
             }
         }
 
