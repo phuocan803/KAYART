@@ -48,20 +48,20 @@ namespace Client
             }
             else
             {
-                MessageBox.Show("Vui lòng xác thực Captcha!");
+                MessageBox.Show("Please verify Captcha!");
                 return;
             }
 
             if (string.IsNullOrEmpty(fullName) || string.IsNullOrEmpty(username) ||
                 string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
+                MessageBox.Show("Please fill in all information!");
                 return;
             }
 
             if (password != confirmPass)
             {
-                MessageBox.Show("Mật khẩu xác nhận không khợp!");
+                MessageBox.Show("Confirm password does not match!");
                 TextBox_ConfirmPass.Clear();
                 TextBox_ConfirmPass.Focus();
                 return;
@@ -97,7 +97,7 @@ namespace Client
 
                         if (response.Success)
                         {
-                            MessageBox.Show("Ðang ký thành công!");
+                            MessageBox.Show("Registration successful!");
 
                             Form_Login loginForm = new Form_Login(this.Location, this.Size);
                             loginForm.Show();
@@ -105,14 +105,14 @@ namespace Client
                         }
                         else
                         {
-                            MessageBox.Show(response.ErrorMessage ?? "Ðăng ký thất bại!");
+                            MessageBox.Show(response.ErrorMessage ?? "Registration failed!");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi kết nối server: " + ex.Message);
+                MessageBox.Show("Server connection error: " + ex.Message);
             }
         }
 
