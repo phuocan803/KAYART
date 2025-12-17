@@ -71,7 +71,7 @@ namespace Client
 
             if (string.IsNullOrEmpty(acc) || string.IsNullOrEmpty(pass))
             {
-                MessageBox.Show("Vui lòng nhập tên đăng nhập và mật khẩu!");
+                MessageBox.Show("Please enter username and password!");
                 return;
             }
 
@@ -83,7 +83,7 @@ namespace Client
             }
             else
             {
-                MessageBox.Show("Vui lòng xác thực Captcha!");
+                MessageBox.Show("Please verify Captcha!");
                 return;
             }
 
@@ -127,8 +127,8 @@ namespace Client
 
                 if (string.IsNullOrEmpty(responseJson))
                 {
-                    MessageBox.Show("Server không phản hồi!\n\nKiểm tra:\n1. Server đang chạy\n2. Case 6 handler đã được implement",
-                        "Lỗi",
+                    MessageBox.Show("Server not responding!\n\nCheck:\n1. Server is running\n2. Case 6 handler is implemented",
+                        "Error",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
                     return;
@@ -146,7 +146,7 @@ namespace Client
                         response.TokenExpiry
                     );
 
-                    MessageBox.Show("Đăng nhập thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Login successful!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     Form_Home homeForm = new Form_Home(acc);
                     homeForm.WindowState = FormWindowState.Maximized;
@@ -161,8 +161,8 @@ namespace Client
                 }
                 else
                 {
-                    MessageBox.Show(response.ErrorMessage ?? "Đăng nhập thất bại!",
-                        "Lỗi đăng nhập",
+                    MessageBox.Show(response.ErrorMessage ?? "Login failed!",
+                        "Login Error",
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
                     TextBox_Pass.Clear();
@@ -172,26 +172,26 @@ namespace Client
             catch (SocketException)
             {
                 MessageBox.Show(
-                    "Lưu ý: Cần có Server để sử dụng ứng dụng!",
-                    "Lỗi kết nối Server",
+                    "Note: Server is required to use the application!",
+                    "Server Connection Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             catch (IOException)
             {
                 MessageBox.Show(
-                    "Lỗi đọc/ghi dữ liệu!\n\n" +
-                    "Server có thể đã đóng kết nối.\n" +
-                    "Vui lòng kiểm tra và thử lại.",
-                    "Lỗi I/O",
+                    "Data read/write error!\n\n" +
+                    "Server may have closed the connection.\n" +
+                    "Please check and try again.",
+                    "I/O Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"Lỗi không xác định!\n\n{ex.Message}",
-                    "Lỗi",
+                    $"Unidentified error!\n\n{ex.Message}",
+                    "Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
