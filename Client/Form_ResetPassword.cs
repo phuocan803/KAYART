@@ -44,13 +44,13 @@ namespace Client
 
             if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ mật khẩu!");
+                MessageBox.Show("Please enter password completely!");
                 return;
             }
 
             if (newPassword != confirmPassword)
             {
-                MessageBox.Show("Mật khẩu xác nhận không khớp!");
+                MessageBox.Show("Confirm password does not match!");
                 TextBox_ConfirmPass.Clear();
                 TextBox_ConfirmPass.Focus();
                 return;
@@ -58,7 +58,7 @@ namespace Client
 
             if (string.IsNullOrEmpty(resetEmail))
             {
-                MessageBox.Show("Không tìm thấy email để reset password!");
+                MessageBox.Show("Email not found for password reset!");
                 return;
             }
 
@@ -87,7 +87,7 @@ namespace Client
 
                 if (response.Success)
                 {
-                    MessageBox.Show("Ðặt lại mật khẩu thành công!");
+                    MessageBox.Show("Password reset successful!");
                     client.Close();
 
                     Form_Login loginForm = new Form_Login(this.Location, this.Size);
@@ -96,13 +96,13 @@ namespace Client
                 }
                 else
                 {
-                    MessageBox.Show(response.ErrorMessage ?? "Không thể đặt lại mật khẩu!");
+                    MessageBox.Show(response.ErrorMessage ?? "Cannot reset password!");
                     client.Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi kết nối server: " + ex.Message);
+                MessageBox.Show("Server connection error: " + ex.Message);
             }
         }
         private void Button_Back_Click(object sender, EventArgs e)
