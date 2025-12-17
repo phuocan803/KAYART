@@ -41,7 +41,8 @@ namespace Client
 
         // State
         private int selectedFriendId = -1;
-        private string selectedFriendName = "";
+        private string selectedFriendName = "+";
+
         private List<FriendInfo> cachedFriends = new List<FriendInfo>();
         
         // Auto-refresh timers
@@ -126,7 +127,7 @@ namespace Client
                 Location = new Point(240, 10),
                 Width = 50,
                 Height = 25,
-                Text = "",
+                Text = "🔍",
                 BackColor = Color.FromArgb(70, 130, 180),
                 ForeColor = Color.White,
                 FlatStyle = FlatStyle.Flat,
@@ -1262,7 +1263,7 @@ namespace Client
             Label nameLabel = new Label { Text = friend.Username, Location = new Point(50, 8), AutoSize = true, ForeColor = Color.White, Font = new Font("Segoe UI", 9F, FontStyle.Bold) };
             Label statusLabel = new Label { Text = friend.IsOnline ? "Online" : "Offline", Location = new Point(50, 28), AutoSize = true, ForeColor = friend.IsOnline ? Color.LightGreen : Color.Gray, Font = new Font("Segoe UI", 7F) };
 
-            Button chatBtn = new Button { Text = "", Location = new Point(card.Width - 38, 14), Size = new Size(30, 28), BackColor = Color.FromArgb(0, 120, 215), ForeColor = Color.White, FlatStyle = FlatStyle.Flat, Font = new Font("Segoe UI", 9F), Cursor = Cursors.Hand };
+            Button chatBtn = new Button { Text = "💬", Location = new Point(card.Width - 38, 14), Size = new Size(30, 28), BackColor = Color.FromArgb(0, 120, 215), ForeColor = Color.White, FlatStyle = FlatStyle.Flat, Font = new Font("Segoe UI", 9F), Cursor = Cursors.Hand };
             chatBtn.FlatAppearance.BorderSize = 0;
             chatBtn.Click += (s, e) => OpenChatWithFriend(friend);
 
