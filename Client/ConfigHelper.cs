@@ -10,7 +10,7 @@ namespace Client
         private static readonly object _lock = new object();
 
         // mặc định là cái này nếu không có config
-        private const string DEFAULT_SERVER_IP = "127.0.0.1";
+        private const string DEFAULT_SERVER_IP = "172.0.0.1";
         private const int DEFAULT_SERVER_PORT = 9999;
         private const string DEFAULT_RECAPTCHA_KEY = ""; // để test
 
@@ -58,7 +58,7 @@ namespace Client
                 {
                     if (_config != null)
                     {
-                        string configValue = _config["Server"]?["DefaultIP"]?.Value<string>();
+                        string configValue = _config["ServerSettings"]?["ServerIP"]?.Value<string>();
                         
                         if (!string.IsNullOrWhiteSpace(configValue))
                         {
@@ -84,7 +84,7 @@ namespace Client
                 {
                     if (_config != null)
                     {
-                        int? configValue = _config["Server"]?["DefaultPort"]?.Value<int?>();
+                        int? configValue = _config["ServerSettings"]?["ServerPort"]?.Value<int?>();
                         
                         if (configValue.HasValue && configValue.Value > 0 && configValue.Value <= 65535)
                         {

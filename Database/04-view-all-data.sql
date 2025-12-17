@@ -1,6 +1,12 @@
 /* 04-view-all-data.sql */
 /* View all data from all tables in KayArtDB */
 
+SELECT COUNT(*) as TotalUsers FROM Users;
+SELECT Id, Username, Email FROM Users ORDER BY Id;
+
+SELECT Username, COUNT(*) FROM Users GROUP BY Username HAVING COUNT(*) > 1;
+SELECT Email, COUNT(*) FROM Users GROUP BY Email HAVING COUNT(*) > 1;
+
 USE KayArtDB;
 GO
 
