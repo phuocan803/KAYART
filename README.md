@@ -23,12 +23,12 @@
 
 ## 👥 Thành Viên Nhóm
 
-| STT | MSSV    | Họ và tên              |
-|-----|---------|------------------------|
-| 1   | 24520043| Hà Nguyễn Hiếu An      |
-| 2   | 24520048| Huỳnh Phước An         |
-| 3   | 24520054| Nguyễn Chiêu Ân        |
-| 4   | 24520919| Võ Tưởng Tuấn Kiệt     |
+| STT | MSSV | Họ và tên | Vai trò |
+|:---:|:---:|:---|:---:|
+| 1 | 24520048 | **Huỳnh Phước An** | **Team Leader** |
+| 2 | 24520043 | Hà Nguyễn Hiếu An | Member |
+| 3 | 24520054 | Nguyễn Chiêu Ân | Member |
+| 4 | 24520919 | Võ Tưởng Tuấn Kiệt | Member |
 
 ## 📌 Mục lục
 * [Giới thiệu](#-giới-thiệu-về-kayart)
@@ -68,6 +68,36 @@ Hệ thống được thiết kế theo mô hình **Client-Server**, xử lý đ
 
 ![Kiến trúc hệ thống](img/KienTruc.png)  
 *(Mô tả: Server điều phối các gói tin vẽ từ Client A đến tất cả Client khác trong phòng)*
+
+## 🌐 Network Stack & Communication Protocol
+
+Hệ thống truyền tải dữ liệu dựa trên kiến trúc phân lớp, tối ưu hóa cho việc truyền tải các gói tin vẽ (Drawing Packets) với tần suất cao.
+
+|  Network Stack |
+| :---: |
+| ![NetworkStack](img/NetworkStack.jpg) |
+
+### 1. Phân Lớp Giao Thức (Network Layers)
+| Lớp | Công nghệ sử dụng | Mô tả |
+| :--- | :--- | :--- |
+| **Application Layer** | **JSON Serialization** | Định dạng dữ liệu trao đổi giữa Client và Server |
+| **Presentation Layer** | **Newtonsoft.Json** | Mã hóa và giải mã đối tượng C# sang chuỗi JSON |
+| **Transport Layer** | **TCP & UDP Sockets** | ***TCP:*** Đảm bảo độ tin cậy cho Auth/Room. ***UDP:*** Tối ưu tốc độ cho nét vẽ |
+| **Network Layer** | **IPv4 / DNS** | Định danh và điều hướng gói tin trong mạng |
+
+### 2. Cấu Trúc Gói Tin (Packet Structure)
+Mọi thông tin trao đổi đều được đóng gói dưới dạng JSON:
+```json
+{
+  {
+  "Code": 6,
+  "LoginUsername": "ten-nguoi-dung",
+  "LoginPassword": "mat-khau-nguoi-dung",
+  "CaptchaToken": "token-xac-thuc",
+  ...
+  }
+}
+```
 
 ## 🌟 Tính Năng Nổi Bật
 
@@ -245,5 +275,6 @@ Dự án này được phát triển cho mục đích học tập tại Đại h
 ---
 
 <p align="center">
+  <b>KAYART</b> stands for <b>K</b>eep <b>A</b>ll <b>Y</b>our <b>A</b>bstract <b>R</b>eal-time <b>T</b>houghts <br>
   <strong>Made with ❤️ by KayArt Team</strong>
 </p>
