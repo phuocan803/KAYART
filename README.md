@@ -17,7 +17,7 @@
 ## 🏫 Thông Tin Đồ Án
 
 * **Môn học:** Lập trình mạng căn bản (NT106)
-* **Trường:** Đại học Công nghệ Thông tin (UIT)
+* **Trường:** Đại học Công nghệ Thông tin (UIT) - Đại học Quốc gia TP.HCM
 * **Giảng viên hướng dẫn:** ThS. Lê Minh Khánh Hội
 * **Nhóm thực hiện:** Nhóm 3
 
@@ -34,6 +34,7 @@
 * [Giới thiệu](#-giới-thiệu-về-kayart)
 * [Công nghệ sử dụng](#-công-nghệ-sử-dụng)
 * [Kiến trúc hệ thống](#-kiến-trúc-hệ-thống)
+* [Network stack](#-network-stack--communication-protocol)
 * [Tính năng nổi bật](#-tính-năng-nổi-bật)
 * [Cài đặt](#-cài-đặt--chạy-ứng-dụng)
 * [Hình ảnh Demo](#-hình-ảnh-demo)
@@ -73,9 +74,13 @@ Hệ thống được thiết kế theo mô hình **Client-Server**, xử lý đ
 
 Hệ thống truyền tải dữ liệu dựa trên kiến trúc phân lớp, tối ưu hóa cho việc truyền tải các gói tin vẽ (Drawing Packets) với tần suất cao.
 
-|  Network Stack |
-| :---: |
-| ![NetworkStack](img/NetworkStack.jpg) |
+<p align="center">
+  <br>
+  <i>Network Stack</i>
+  <br>
+  <img src="img/NetworkStack.jpg" alt="Network Stack"
+</p>
+
 
 ### 1. Phân Lớp Giao Thức (Network Layers)
 | Lớp | Công nghệ sử dụng | Mô tả |
@@ -92,7 +97,7 @@ Mọi thông tin trao đổi đều được đóng gói dưới dạng JSON:
   {
   "Code": 6,
   "LoginUsername": "ten-nguoi-dung",
-  "LoginPassword": "mat-khau-nguoi-dung",
+  "LoginPassword": "mat-khau-nguoi-dung", // Password đã được Hash (Bcryt) trước khi gửi
   "CaptchaToken": "token-xac-thuc",
   ...
   }
@@ -262,13 +267,17 @@ Chúng tôi hoan nghênh mọi đóng góp cho Ứng dụng và rất vui mừng
 4. Push to branch (`git push origin feature/AmazingFeature`)
 5. Tạo Pull Request
 
-## 📝 License
+## 📝 Bản Quyền & Giấy Phép
 
-Dự án này được phát triển cho mục đích học tập tại Đại học Công nghệ Thông tin (UIT).
+Dự án này được phát triển hoàn toàn cho mục đích học tập trong khuôn khổ môn học **Lập trình mạng căn bản (NT106)** tại **Trường Đại học Công nghệ Thông tin (UIT) - Đại học Quốc gia TP.HCM**.
+
+* **Mục đích:** Nghiên cứu và thực hành kỹ thuật lập trình Socket, WebSocket trong C#, triển khai hệ thống phân tán trên nền tảng Google Cloud Platform (GCP).
+* **Sử dụng:** Mã nguồn được cung cấp công khai cho mục đích tham khảo học tập. Vui lòng trích dẫn nguồn nếu bạn sử dụng lại các thành phần của dự án này.
+* **Trách nhiệm:** Nhóm phát triển không chịu trách nhiệm về các vấn đề phát sinh khi mã nguồn được sử dụng sai mục đích học tập hoặc triển khai trong các môi trường thương mại mà không qua kiểm soát bảo mật.
 
 ## 🙏 Lời Cảm Ơn
 
-- Cảm ơn giảng viên Ths. Lê Minh Khánh Hội đã hướng dẫn đã hỗ trợ trong quá trình phát triển
+- Cảm ơn giảng viên Ths. Lê Minh Khánh Hội đã hướng dẫn, hỗ trợ trong quá trình phát triển
 - Cảm ơn các thư viện mã nguồn mở đã được sử dụng trong dự án
 - Cảm ơn cộng đồng .NET và các diễn đàn lập trình đã cung cấp tài nguyên hữu ích
 
